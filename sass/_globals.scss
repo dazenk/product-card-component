@@ -1,0 +1,172 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
+
+// Mixins
+@mixin display {
+    display: flex;
+    flex-direction: column;
+}
+
+// Variables
+$dark-cyan: hsl(158, 36%, 37%);
+$dark-cyan-hover: hsl(158, 36%, 20%);
+$cream: hsl(30, 38%, 92%);
+$very-dark-blue: hsl(212, 21%, 14%);
+$dark-grayish-blue: hsl(228, 12%, 48%);
+$white: hsl(0, 0%, 100%);
+
+// Styles
+* {
+    margin: 0;
+    padding: 0;
+}
+  
+html {
+    min-width: 100vw;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    @include display();
+    background-color: $cream;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .card {
+        display: flex;
+        max-width: 600px;
+        height: auto;
+        justify-content: space-between;
+        margin: 30px;
+
+        .image {
+            width: 300px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 10px 0px 0px 10px;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .description {
+            @include display();
+            background-color: $white;
+            border-radius: 0px 10px 10px 0px;
+            width: 300px;
+            height: auto;
+            padding: 30px;
+            box-sizing: border-box;
+            gap: 25px;
+
+            .category {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 5px;
+                color: $dark-grayish-blue;
+            }
+
+            .product {
+                @include display();
+                gap: 25px;
+
+                .title {
+                    font-family: 'Fraunces', serif;
+                    color: $very-dark-blue;
+                    font-size: 32px;
+                    font-weight: 700;
+                    line-height: 30px;
+                }
+
+                .text {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    color: $dark-grayish-blue;
+                }
+            }
+
+            .price {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .discount-price {
+                    font-family: 'Fraunces', serif;
+                    font-size: 32px;
+                    font-weight: 700;
+                    color: $dark-cyan;
+                }
+
+                .old-price {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    text-decoration: line-through;
+                    color: $dark-grayish-blue;
+                    font-size: 12px;
+                }
+            }
+
+            .btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                cursor: pointer;
+                color: $white;
+                border: none;
+                height: 50px;
+                border-radius: 8px;
+                background-color: $dark-cyan;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    background-color: $dark-cyan-hover;
+                }
+            }
+        }
+    }
+}
+
+// Media queries
+@media (max-width: 659px) {
+    .container {
+
+        .card {
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .image {
+                border-radius: 10px 10px 0px 0px;
+                width: 340px;
+                height: 250px;
+            }
+
+            .description {
+                border-radius: 0px 0px 10px 10px;
+                width: 340px;
+                gap: 15px;
+                padding: 22px;
+
+                .product {
+                    gap: 15px;
+
+                    .text {
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
